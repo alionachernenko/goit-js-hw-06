@@ -6,6 +6,7 @@ const numberInput = document.querySelector("input");
 const createButton = document.querySelector("[data-create]");
 const destroyButton = document.querySelector("[data-destroy]");
 const divBoxes = document.querySelector("#boxes");
+const coloredBoxes = [];
 
 const creatBoxes = (amount) => {
   let boxSize = 30;
@@ -20,13 +21,14 @@ const creatBoxes = (amount) => {
     box.style.width = boxSize + "px";
     box.style.height = boxSize + "px";
     box.style.backgroundColor = getRandomHexColor();
-    divBoxes.append(box);
+    coloredBoxes.push(box);
   }
 };
 
 createButton.addEventListener("click", () => {
   const amount = numberInput.value;
   creatBoxes(amount);
+  divBoxes.append(...coloredBoxes);
 });
 
 destroyButton.addEventListener("click", () => {
